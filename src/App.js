@@ -8,8 +8,13 @@ import {
   Grid,
   CssBaseline,
   Stack,
-  Divider
+  Divider,
+  IconButton,
+  Modal,
+  ModalDialog,
+  Alert
 } from '@mui/joy';
+import { Info } from '@mui/icons-material';
 import Typewriter from 'typewriter-effect';
 import { getResponse } from './modules/firebase.js';
 
@@ -19,6 +24,7 @@ const App = () => {
   const [prompt, setPrompt] = useState('');
   const [answered, setAnswered] = useState(false);
   const [answering, setAnswering] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <CssVarsProvider>
@@ -28,7 +34,7 @@ const App = () => {
         spacing={2}
         sx={{ flexGrow: 1, margin: '0 auto', maxWidth: 1111 }}
       >
-        <Grid xs={12} sx={{ mb: 11 }}>
+        <Grid xs={12} sx={{ mb: 11, mt: 3 }}>
           <Typography level="h1" textAlign="center">
             Ask {persona} anything
           </Typography>
@@ -89,10 +95,29 @@ const App = () => {
         role="presentation"
         sx={{ mt: 22, maxWidth: 1111, mx: 'auto' }}
       >
-        <Button href="https://golightlyplus.com" component="a" variant="plain">
-          © Golightly+ {new Date().getFullYear()}
-        </Button>
+        <Stack direction="row">
+          <IconButton variant="plain" onClick={() => setShowModal(true)}>
+            <Info />
+          </IconButton>
+          <Button
+            href="https://golightlyplus.com"
+            component="a"
+            variant="plain"
+            target="_blank"
+          >
+            © Golightly+ {new Date().getFullYear()}
+          </Button>
+        </Stack>
       </Divider>
+      <Modal open={showModal} onClose={() => setShowModal(false)}>
+        <ModalDialog layout="center" size="lg" variant="soft">
+          <Alert>
+            This is an AI simulation of a persona. It is intended to be for
+            entertainment purposes only. Although we hope you find it useful too
+            😊
+          </Alert>
+        </ModalDialog>
+      </Modal>
     </CssVarsProvider>
   );
 };
