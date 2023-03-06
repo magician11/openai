@@ -10,12 +10,13 @@ import {
   Stack
 } from '@mui/joy';
 import Typewriter from 'typewriter-effect';
+import { getResponse } from './modules/firebase.js';
 
 const App = () => {
   const persona = 'Jesus';
   const [response, setResponse] = useState('');
+  const [prompt, setPrompt] = useState('');
 
-  console.log('response', response);
   return (
     <CssVarsProvider>
       <CssBaseline />
@@ -31,11 +32,19 @@ const App = () => {
         </Grid>
         <Grid xs={6}>
           <Stack spacing={2} alignItems="center">
-            <Textarea minRows={2} sx={{ width: 333 }} />
+            <Textarea
+              minRows={2}
+              sx={{ width: 333 }}
+              value={prompt}
+              onChange={event => setPrompt(event.target.value)}
+            />
             <Button
               variant="solid"
               sx={{ width: 222 }}
-              onClick={() => setResponse('yes I do')}
+              onClick={async () => {
+                const personaResponse = await getResponse(persona, prompt);
+                setResponse(personaResponse.data);
+              }}
             >
               Ask
             </Button>
