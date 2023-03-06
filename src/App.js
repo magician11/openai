@@ -16,6 +16,8 @@ const App = () => {
   const persona = 'Jesus';
   const [response, setResponse] = useState('');
   const [prompt, setPrompt] = useState('');
+  const [answered, setAnswered] = useState(false);
+  const [answering, setAnswering] = useState(false);
 
   return (
     <CssVarsProvider>
@@ -30,7 +32,7 @@ const App = () => {
             Ask {persona} anything
           </Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={12} md={6}>
           <Stack spacing={2} alignItems="center">
             <Textarea
               minRows={2}
@@ -38,27 +40,46 @@ const App = () => {
               value={prompt}
               onChange={event => setPrompt(event.target.value)}
             />
-            <Button
-              variant="solid"
-              sx={{ width: 222 }}
-              onClick={async () => {
-                const personaResponse = await getResponse(persona, prompt);
-                setResponse(personaResponse.data);
-              }}
-            >
-              Ask
-            </Button>
+            {answered ? (
+              <Button
+                variant="soft"
+                sx={{ width: 222 }}
+                onClick={async () => {
+                  setResponse('');
+                  setPrompt('');
+                  setAnswered(false);
+                  setAnswering(false);
+                }}
+              >
+                Ask a new question
+              </Button>
+            ) : (
+              <Button
+                variant="solid"
+                sx={{ width: 222 }}
+                onClick={async () => {
+                  setAnswering(true);
+                  const personaResponse = await getResponse(persona, prompt);
+                  setResponse(personaResponse.data);
+                }}
+                disabled={!prompt || answering}
+              >
+                Ask
+              </Button>
+            )}
           </Stack>
         </Grid>
-        <Grid xs={6}>
-          <Typography level="body1">
+        <Grid xs={12} md={6} sx={{ textAlign: 'center', mt: 3 }}>
+          {response && (
             <Typewriter
-              options={{
-                strings: [response],
-                autoStart: true
+              onInit={typewriter => {
+                typewriter
+                  .typeString(response)
+                  .callFunction(() => setAnswered(true))
+                  .start();
               }}
             />
-          </Typography>
+          )}
         </Grid>
       </Grid>
     </CssVarsProvider>
