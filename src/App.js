@@ -7,7 +7,8 @@ import {
   Textarea,
   Grid,
   CssBaseline,
-  Stack
+  Stack,
+  Divider
 } from '@mui/joy';
 import Typewriter from 'typewriter-effect';
 import { getResponse } from './modules/firebase.js';
@@ -38,6 +39,7 @@ const App = () => {
               minRows={2}
               sx={{ width: 333 }}
               value={prompt}
+              disabled={answering}
               onChange={event => setPrompt(event.target.value)}
             />
             {answered ? (
@@ -82,6 +84,15 @@ const App = () => {
           )}
         </Grid>
       </Grid>
+      <Divider
+        component="div"
+        role="presentation"
+        sx={{ mt: 22, maxWidth: 1111, mx: 'auto' }}
+      >
+        <Button href="https://golightlyplus.com" component="a" variant="plain">
+          © Golightly+ {new Date().getFullYear()}
+        </Button>
+      </Divider>
     </CssVarsProvider>
   );
 };

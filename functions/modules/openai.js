@@ -6,6 +6,9 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
+const createPrompt = (persona, question) =>
+  `${question.replace(/\?/g, '')}, ${persona}? Answer in the first person.`;
+
 const createCompletion = async (persona, prompt) => {
   functions.logger.log(
     `About to complete the prompt "${prompt}"... for the persona "${persona}"`
@@ -13,7 +16,7 @@ const createCompletion = async (persona, prompt) => {
   try {
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
-      prompt: `Respond as ${persona}: ${prompt}`,
+      prompt: createPrompt(persona, prompt),
       temperature: 0.6,
       max_tokens: 333
     });
