@@ -1,0 +1,135 @@
+[debug] [2023-03-07T07:33:18.940Z] ----------------------------------------------------------------------
+[debug] [2023-03-07T07:33:18.941Z] Command:       /Users/andrewgolightly/.nvm/versions/node/v18.12.0/bin/node /Users/andrewgolightly/.nvm/versions/node/v18.12.0/bin/firebase emulators:start
+[debug] [2023-03-07T07:33:18.941Z] CLI Version:   11.24.0
+[debug] [2023-03-07T07:33:18.941Z] Platform:      darwin
+[debug] [2023-03-07T07:33:18.941Z] Node Version:  v18.12.0
+[debug] [2023-03-07T07:33:18.942Z] Time:          Tue Mar 07 2023 13:03:18 GMT+0530 (India Standard Time)
+[debug] [2023-03-07T07:33:18.942Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-07T07:33:18.973Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-07T07:33:18.973Z] > authorizing via signed-in user (support@andrewgolightly.com)
+[info] i  emulators: Starting emulators: functions, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, hosting"}}
+[debug] [2023-03-07T07:33:19.160Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-07T07:33:19.161Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-07T07:33:19.161Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-03-07T07:33:19.164Z] [hub] writing locator at /var/folders/wj/04krxt115mb5rm452g_04tmw0000gn/T/hub-openai-1111.json
+[debug] [2023-03-07T07:33:19.275Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-07T07:33:19.275Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-07T07:33:19.275Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, pubsub, storage\u001b[22m"}}
+[debug] [2023-03-07T07:33:19.276Z] defaultcredentials: writing to file /Users/andrewgolightly/.config/firebase/support_andrewgolightly_com_application_default_credentials.json
+[debug] [2023-03-07T07:33:19.283Z] Setting GAC to /Users/andrewgolightly/.config/firebase/support_andrewgolightly_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/andrewgolightly/.config/firebase/support_andrewgolightly_com_application_default_credentials.json"}}
+[debug] [2023-03-07T07:33:19.286Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/openai-1111/adminSdkConfig [none]
+[debug] [2023-03-07T07:33:19.854Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/openai-1111/adminSdkConfig 200
+[debug] [2023-03-07T07:33:19.855Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/openai-1111/adminSdkConfig {"projectId":"openai-1111","storageBucket":"openai-1111.appspot.com"}
+[debug] [2023-03-07T07:33:19.888Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/openai-1111/sites 
+[debug] [2023-03-07T07:33:20.906Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/openai-1111/sites 200
+[debug] [2023-03-07T07:33:20.907Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/openai-1111/sites {"sites":[{"name":"projects/openai-1111/sites/openai-1111","defaultUrl":"https://openai-1111.web.app","appId":"1:161322896136:web:139fc313c5231aa63ebabd","type":"DEFAULT_SITE"}]}
+[debug] [2023-03-07T07:33:20.907Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/openai-1111/webApps/1:161322896136:web:139fc313c5231aa63ebabd/config [none]
+[debug] [2023-03-07T07:33:22.370Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/openai-1111/webApps/1:161322896136:web:139fc313c5231aa63ebabd/config 200
+[debug] [2023-03-07T07:33:22.370Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/openai-1111/webApps/1:161322896136:web:139fc313c5231aa63ebabd/config {"projectId":"openai-1111","appId":"1:161322896136:web:139fc313c5231aa63ebabd","storageBucket":"openai-1111.appspot.com","apiKey":"AIzaSyDBI9x0xvXgQpimGJdtJNwQ0pcFZQelVhc","authDomain":"openai-1111.firebaseapp.com","messagingSenderId":"161322896136","measurementId":"G-M9ZNJX9GMY"}
+[debug] [2023-03-07T07:33:22.379Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/openai-1111 [none]
+[debug] [2023-03-07T07:33:23.015Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/openai-1111 200
+[debug] [2023-03-07T07:33:23.016Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/openai-1111 {"projectId":"openai-1111","projectNumber":"161322896136","displayName":"OpenAI","name":"projects/openai-1111","resources":{"hostingSite":"openai-1111"},"state":"ACTIVE","etag":"1_2a3eb15a-4d35-4b39-ac4c-e59eb6830113"}
+[info] i  hosting[openai-1111]: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] ✔  hosting[openai-1111]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[debug] [2023-03-07T07:33:23.080Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-07T07:33:23.080Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-07T07:33:23.080Z] Starting Emulator UI with command {"binary":"node","args":["/Users/andrewgolightly/.cache/firebase/emulators/ui-v1.11.4/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/andrewgolightly/.cache/firebase/emulators/ui-v1.11.4/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-03-07T07:33:23.152Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-03-07T07:33:23.152Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] i  functions: Watching "/Users/andrewgolightly/coding/open-ai/openai-personas/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/andrewgolightly/coding/open-ai/openai-personas/functions\" for Cloud Functions..."}}
+[debug] [2023-03-07T07:33:23.350Z] Validating nodejs source
+[debug] [2023-03-07T07:33:25.120Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.2.0",
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.0.0"
+  },
+  "private": true
+}
+[debug] [2023-03-07T07:33:25.120Z] Building nodejs source
+[debug] [2023-03-07T07:33:25.121Z] Failed to find version of module node: reached end of search path /Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "16" doesn't match your global version "18". Using node@18 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2023-03-07T07:33:25.125Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-07T07:33:25.132Z] Found firebase-functions binary at '/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/.bin/firebase-functions'
+[debug] [2023-03-07T07:33:25.251Z] Serving at port 8219
+
+[debug] [2023-03-07T07:33:25.389Z] Got response from /__/functions.yaml {"endpoints":{"personaResponse":{"platform":"gcfv1","labels":{},"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"callableTrigger":{},"entryPoint":"personaResponse"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-07T07:33:25.392Z] shutdown requested via /__/quitquitquit
+
+[info] ✔  functions: Loaded functions definitions from source: personaResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: personaResponse."}}
+[info] ✔  functions[us-central1-personaResponse]: http function initialized (http://127.0.0.1:5001/openai-1111/us-central1/personaResponse). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/openai-1111/us-central1/personaResponse)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Hosting   │ 127.0.0.1:5000 │ n/a                             │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2023-03-07T07:33:31.486Z] [work-queue] {"queuedWork":["/openai-1111/us-central1/personaResponse-2023-03-07T07:33:31.486Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-03-07T07:33:31.487Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/openai-1111/us-central1/personaResponse-2023-03-07T07:33:31.486Z"],"workRunningCount":1}
+[debug] [2023-03-07T07:33:31.487Z] Accepted request POST /openai-1111/us-central1/personaResponse --> us-central1-personaResponse
+[debug] [2023-03-07T07:33:31.488Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-03-07T07:33:31.489Z] [functions] Got req.url=/openai-1111/us-central1/personaResponse, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/openai-1111/us-central1/personaResponse, mapping to path=/"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2023-03-07T07:33:31.505Z] [worker-pool] addWorker(us-central1-personaResponse) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-personaResponse)"}}
+[debug] [2023-03-07T07:33:31.506Z] [worker-pool] Adding worker with key us-central1-personaResponse, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-personaResponse, total=1"}}
+[debug] [2023-03-07T07:33:32.061Z] [runtime-status] [78304] Resolved module firebase-admin {"declared":true,"installed":true,"version":"11.5.0","resolution":"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"11.5.0\",\"resolution\":\"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2023-03-07T07:33:32.061Z] [runtime-status] [78304] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.2.1","resolution":"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-functions/lib/v1/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.2.1\",\"resolution\":\"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-functions/lib/v1/index.js\"}"}}
+[debug] [2023-03-07T07:33:32.061Z] [runtime-status] [78304] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2023-03-07T07:33:32.062Z] [runtime-status] [78304] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.2.1","resolution":"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-functions/lib/v1/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.2.1\",\"resolution\":\"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-functions/lib/v1/index.js\"}"}}
+[debug] [2023-03-07T07:33:32.157Z] [runtime-status] [78304] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] Checked functions.config() {\"config\":{}}"}}
+[debug] [2023-03-07T07:33:32.157Z] [runtime-status] [78304] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.2.1","resolution":"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-functions/lib/v1/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.2.1\",\"resolution\":\"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-functions/lib/v1/index.js\"}}"}}
+[debug] [2023-03-07T07:33:32.157Z] [runtime-status] [78304] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.2.1","resolution":"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-functions/lib/v1/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.2.1\",\"resolution\":\"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-functions/lib/v1/index.js\"}"}}
+[debug] [2023-03-07T07:33:32.157Z] [runtime-status] [78304] Resolved module firebase-admin {"declared":true,"installed":true,"version":"11.5.0","resolution":"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"11.5.0\",\"resolution\":\"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2023-03-07T07:33:32.158Z] [runtime-status] [78304] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.2.1","resolution":"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-functions/lib/v1/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.2.1\",\"resolution\":\"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-functions/lib/v1/index.js\"}"}}
+[debug] [2023-03-07T07:33:32.158Z] [runtime-status] [78304] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"11.5.0","resolution":"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"11.5.0\",\"resolution\":\"/Users/andrewgolightly/coding/open-ai/openai-personas/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2023-03-07T07:33:32.184Z] [runtime-status] [78304] Functions runtime initialized. {"cwd":"/Users/andrewgolightly/coding/open-ai/openai-personas/functions","node_version":"18.12.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] Functions runtime initialized. {\"cwd\":\"/Users/andrewgolightly/coding/open-ai/openai-personas/functions\",\"node_version\":\"18.12.0\"}"}}
+[debug] [2023-03-07T07:33:32.184Z] [runtime-status] [78304] Listening to port: /var/folders/wj/04krxt115mb5rm452g_04tmw0000gn/T/fire_emu_5b62c1a03a6566a4.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] Listening to port: /var/folders/wj/04krxt115mb5rm452g_04tmw0000gn/T/fire_emu_5b62c1a03a6566a4.sock"}}
+[debug] [2023-03-07T07:33:32.219Z] [worker-us-central1-personaResponse-ccf49dba-90ca-4bb7-aece-cd4db681190b]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[worker-us-central1-personaResponse-ccf49dba-90ca-4bb7-aece-cd4db681190b]: IDLE"}}
+[debug] [2023-03-07T07:33:32.219Z] [worker-pool] submitRequest(triggerId=us-central1-personaResponse) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-personaResponse)"}}
+[info] i  functions: Beginning execution of "us-central1-personaResponse" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"Beginning execution of \"us-central1-personaResponse\""}}
+[debug] [2023-03-07T07:33:32.220Z] [worker-us-central1-personaResponse-ccf49dba-90ca-4bb7-aece-cd4db681190b]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[worker-us-central1-personaResponse-ccf49dba-90ca-4bb7-aece-cd4db681190b]: BUSY"}}
+[info] >  {"verifications":{"app":"MISSING","auth":"MISSING"},"logging.googleapis.com/labels":{"firebase-log-type":"callable-request-verification"},"severity":"DEBUG","message":"Callable request verification passed"} {"user":{"verifications":{"app":"MISSING","auth":"MISSING"},"logging.googleapis.com/labels":{"firebase-log-type":"callable-request-verification"},"severity":"DEBUG","message":"Callable request verification passed"},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"verifications\":{\"app\":\"MISSING\",\"auth\":\"MISSING\"},\"logging.googleapis.com/labels\":{\"firebase-log-type\":\"callable-request-verification\"},\"severity\":\"DEBUG\",\"message\":\"Callable request verification passed\"}"}}
+[info] >  {"severity":"INFO","message":"About to complete the prompt \"what is your favourite game?\"... for the persona \"Jesus\""} {"user":{"severity":"INFO","message":"About to complete the prompt \"what is your favourite game?\"... for the persona \"Jesus\""},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"severity\":\"INFO\",\"message\":\"About to complete the prompt \\\"what is your favourite game?\\\"... for the persona \\\"Jesus\\\"\"}"}}
+[debug] [2023-03-07T07:33:32.228Z] [runtime-status] [78304] No callable functions auth found {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[runtime-status] [78304] No callable functions auth found"}}
+[info] >  {"id":"cmpl-6rM7BWfRzn3aRM7UFADJiK0HB5gKX","object":"text_completion","created":1678174413,"model":"text-davinci-003","choices":[{"text":"\n\nMy favorite game is soccer. I love the thrill of competing and playing with friends. It's a great way to stay active and have fun.","index":0,"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":14,"completion_tokens":31,"total_tokens":45},"severity":"INFO","message":"completion.data"} {"user":{"id":"cmpl-6rM7BWfRzn3aRM7UFADJiK0HB5gKX","object":"text_completion","created":1678174413,"model":"text-davinci-003","choices":[{"text":"\n\nMy favorite game is soccer. I love the thrill of competing and playing with friends. It's a great way to stay active and have fun.","index":0,"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":14,"completion_tokens":31,"total_tokens":45},"severity":"INFO","message":"completion.data"},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"id\":\"cmpl-6rM7BWfRzn3aRM7UFADJiK0HB5gKX\",\"object\":\"text_completion\",\"created\":1678174413,\"model\":\"text-davinci-003\",\"choices\":[{\"text\":\"\\n\\nMy favorite game is soccer. I love the thrill of competing and playing with friends. It's a great way to stay active and have fun.\",\"index\":0,\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":14,\"completion_tokens\":31,\"total_tokens\":45},\"severity\":\"INFO\",\"message\":\"completion.data\"}"}}
+[info] i  functions: Finished "us-central1-personaResponse" in 2172.728792ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"Finished \"us-central1-personaResponse\" in 2172.728792ms"}}
+[debug] [2023-03-07T07:33:34.393Z] [worker-us-central1-personaResponse-ccf49dba-90ca-4bb7-aece-cd4db681190b]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-personaResponse"},"extension":{},"message":"[worker-us-central1-personaResponse-ccf49dba-90ca-4bb7-aece-cd4db681190b]: IDLE"}}
+[debug] [2023-03-07T07:33:34.393Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}

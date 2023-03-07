@@ -45,6 +45,7 @@ const App = () => {
               minRows={2}
               sx={{ width: 333 }}
               value={prompt}
+              autoFocus
               disabled={answering}
               onChange={event => setPrompt(event.target.value)}
             />
