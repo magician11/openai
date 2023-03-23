@@ -22,4 +22,25 @@ const createCompletion = async prompt => {
   }
 };
 
-export { createCompletion };
+const createChatCompletion = async messages => {
+  functions.logger.log(
+    `About to complete for the messages "${JSON.stringify(
+      messages,
+      null,
+      2
+    )}"..."`
+  );
+  try {
+    const completion = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages
+      // temperature: 0.6,
+    });
+    functions.logger.log('completion.data', completion.data);
+    return completion.data.choices[0].message;
+  } catch (error) {
+    functions.logger.error('Error completing', error);
+  }
+};
+
+export { createCompletion, createChatCompletion };
