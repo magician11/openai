@@ -1,5 +1,9 @@
 import functions from 'firebase-functions';
-import { createCompletion, createChatCompletion } from './modules/openai.js';
+import {
+  createCompletion,
+  createChatCompletion,
+  createImage
+} from './modules/openai.js';
 
 export const personaResponse = functions.https.onCall(async (data, context) => {
   const response = await createCompletion(data.prompt);
@@ -19,4 +23,15 @@ export const chatResponse = functions.https.onCall(async (data, context) => {
     response
   });
   return response;
+});
+
+export const generateImage = functions.https.onCall(async (data, context) => {
+  const imageUrl = await createImage(data.prompt);
+  functions.logger.log('chat request', {
+    ip: context.rawRequest.ip,
+    prompt: data.prompt,
+    imageUrl
+  });
+
+  return imageUrl;
 });
