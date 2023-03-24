@@ -44,11 +44,14 @@ const createChatCompletion = async messages => {
 };
 
 const createImage = async prompt => {
+  functions.logger.log(`Generating an image for "${prompt}"`);
   const response = await openai.createImage({
     prompt
   });
 
-  return response.data[0].url;
+  functions.logger.log(response);
+
+  return response.data.data[0].url;
 };
 
 export { createCompletion, createChatCompletion, createImage };
