@@ -12,7 +12,7 @@ const createCompletion = async prompt => {
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
       prompt,
-      temperature: 0.6,
+      // temperature: 0.6,
       max_tokens: 333
     });
     functions.logger.log('completion.data', completion.data);
@@ -30,6 +30,7 @@ const createChatCompletion = async messages => {
       2
     )}"..."`
   );
+
   try {
     const completion = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
@@ -37,6 +38,7 @@ const createChatCompletion = async messages => {
       // temperature: 0.6,
     });
     functions.logger.log('completion.data', completion.data);
+
     return completion.data.choices[0].message;
   } catch (error) {
     functions.logger.error('Error completing', error);

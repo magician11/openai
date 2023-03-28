@@ -5,9 +5,9 @@ import {
   createImage
 } from './modules/openai.js';
 
-export const personaResponse = functions.https.onCall(async (data, context) => {
+export const textCompletion = functions.https.onCall(async (data, context) => {
   const response = await createCompletion(data.prompt);
-  functions.logger.log('persona request', {
+  functions.logger.log('completion request', {
     ip: context.rawRequest.ip,
     prompt: data.prompt,
     response
@@ -22,6 +22,13 @@ export const chatResponse = functions.https.onCall(async (data, context) => {
     prompt: data.messages,
     response
   });
+
+  functions.logger.log(
+    data.messages[data.messages.length - 1],
+    response,
+    context.rawRequest.ip,
+    'Q&A'
+  );
   return response;
 });
 
