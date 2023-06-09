@@ -1,41 +1,36 @@
-import functions from 'firebase-functions';
+import { onCall } from 'firebase-functions/v2/https';
+import { info } from 'firebase-functions/logger';
 import {
   createCompletion,
   createChatCompletion,
   createImage
 } from './modules/openai.js';
 
-export const textCompletion = functions.https.onCall(async (data, context) => {
+// end point for text completions
+export const textCompletion = onCall(async ({ data }) => {
   const response = await createCompletion(data.prompt);
-  functions.logger.log('completion request', {
-    ip: context.rawRequest.ip,
+  info(`Completion request: ${data.prompt}`, {
     prompt: data.prompt,
     response
   });
   return response;
 });
 
-export const chatResponse = functions.https.onCall(async (data, context) => {
+// end point for chat completions
+export const chatResponse = onCall(async ({ data }) => {
   const response = await createChatCompletion(data.messages);
-  functions.logger.log('chat request', {
-    ip: context.rawRequest.ip,
+  info(`Chat request: ${data.messages[data.messages.length - 1]}`, {
     prompt: data.messages,
     response
   });
 
-  functions.logger.log(
-    data.messages[data.messages.length - 1],
-    response,
-    context.rawRequest.ip,
-    'Q&A'
-  );
   return response;
 });
 
-export const generateImage = functions.https.onCall(async (data, context) => {
+// end point for image generations
+export const generateImage = onCall(async ({ data }) => {
   const imageUrl = await createImage(data.prompt);
-  functions.logger.log('chat request', {
-    ip: context.rawRequest.ip,
+  info(`Generate image: ${data.prompt}`, {
     prompt: data.prompt,
     imageUrl
   });

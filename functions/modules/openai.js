@@ -1,29 +1,31 @@
 import { Configuration, OpenAIApi } from 'openai';
-import functions from 'firebase-functions';
+import { info, error } from 'firebase-functions/logger';
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY
 });
 const openai = new OpenAIApi(configuration);
 
+// https://platform.openai.com/docs/api-reference/completions/create
 const createCompletion = async prompt => {
-  functions.logger.log(`About to complete the prompt "${prompt}"..."`);
+  info(`About to complete the prompt "${prompt}"..."`);
   try {
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
       prompt,
-      // temperature: 0.6,
       max_tokens: 333
     });
-    functions.logger.log('completion.data', completion.data);
+    info('completion.data', completion.data);
     return completion.data.choices[0].text;
-  } catch (error) {
-    functions.logger.error('Error completing', error);
+  } catch (err) {
+    error('Error completing prompt', err);
+    throw new Error(err.message);
   }
 };
 
+// https://platform.openai.com/docs/api-reference/chat/create
 const createChatCompletion = async messages => {
-  functions.logger.log(
+  info(
     `About to complete for the messages "${JSON.stringify(
       messages,
       null,
@@ -35,23 +37,24 @@ const createChatCompletion = async messages => {
     const completion = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
       messages
-      // temperature: 0.6,
     });
-    functions.logger.log('completion.data', completion.data);
+    info('chat completion.data', completion.data);
 
     return completion.data.choices[0].message;
-  } catch (error) {
-    functions.logger.error('Error completing', error);
+  } catch (err) {
+    error('Error with chat completion', err);
+    throw new Error(err.message);
   }
 };
 
+// https://platform.openai.com/docs/api-reference/images/create
 const createImage = async prompt => {
-  functions.logger.log(`Generating an image for "${prompt}"`);
+  info(`Generating an image for "${prompt}"`);
   const response = await openai.createImage({
     prompt
   });
 
-  functions.logger.log(response);
+  info(response);
 
   return response.data.data[0].url;
 };

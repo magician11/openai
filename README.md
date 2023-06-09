@@ -1,3 +1,3 @@
-# openai-personas
+# OpenAI
 
-Answering any question as various personas using OpenAI.
+Firebase functions endpoints for communicating with OpenAI.

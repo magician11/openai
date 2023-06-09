@@ -2,7 +2,7 @@
   "functions": [
     {
       "source": "functions",
-      "codebase": "personas",
+      "codebase": "openai",
       "ignore": [
         "node_modules",
         ".git",
@@ -11,15 +11,5 @@
       ],
       "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run lint"]
     }
-  ],
-  "hosting": {
-    "public": "public",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
+  ]
 }
