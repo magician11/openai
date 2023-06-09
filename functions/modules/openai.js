@@ -25,14 +25,6 @@ const createCompletion = async prompt => {
 
 // https://platform.openai.com/docs/api-reference/chat/create
 const createChatCompletion = async messages => {
-  info(
-    `About to complete for the messages "${JSON.stringify(
-      messages,
-      null,
-      2
-    )}"..."`
-  );
-
   try {
     const completion = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',

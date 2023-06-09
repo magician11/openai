@@ -19,7 +19,7 @@ export const textCompletion = onCall(async ({ data }) => {
 // end point for chat completions
 export const chatResponse = onCall(async ({ data }) => {
   const response = await createChatCompletion(data.messages);
-  info(`Chat request: ${data.messages[data.messages.length - 1]}`, {
+  info(`Chat request: "${data.messages[data.messages.length - 1].content}"`, {
     prompt: data.messages,
     response
   });
