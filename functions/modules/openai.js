@@ -7,13 +7,13 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 // https://platform.openai.com/docs/api-reference/completions/create
-const createCompletion = async prompt => {
+const createCompletion = async (prompt, max_tokens = 333) => {
   info(`About to complete the prompt "${prompt}"..."`);
   try {
     const completion = await openai.createCompletion({
-      model: 'text-davinci-003',
+      model: 'gpt-4-32k	',
       prompt,
-      max_tokens: 333
+      max_tokens
     });
     info('completion.data', completion.data);
     return completion.data.choices[0].text;

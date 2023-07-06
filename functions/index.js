@@ -8,7 +8,7 @@ import {
 
 // end point for text completions
 export const textCompletion = onCall(async ({ data }) => {
-  const response = await createCompletion(data.prompt);
+  const response = await createCompletion(data.prompt, data.maxTokens);
   info(`Completion request: ${data.prompt}`, {
     prompt: data.prompt,
     response
