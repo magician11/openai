@@ -11,32 +11,32 @@ const createCompletion = async (prompt, max_tokens = 333) => {
   info(`About to complete the prompt "${prompt}"..."`);
   try {
     const completion = await openai.createCompletion({
-      model: 'gpt-4-32k	',
+      model: 'text-davinci-003',
       prompt,
       max_tokens
     });
     info('completion.data', completion.data);
     return completion.data.choices[0].text;
   } catch (err) {
-    error('Error completing prompt', err);
+    error('Error completing prompt', err.message);
     throw new Error(err.message);
   }
 };
 
 // https://platform.openai.com/docs/api-reference/chat/create
 const createChatCompletion = async messages => {
-  try {
-    const completion = await openai.createChatCompletion({
-      model: 'gpt-3.5-turbo',
-      messages
-    });
-    info('chat completion.data', completion.data);
+  // try {
+  const completion = await openai.createChatCompletion({
+    model: 'gpt-3.5-turbo',
+    messages
+  });
+  info('chat completion.data', completion.data);
 
-    return completion.data.choices[0].message;
-  } catch (err) {
-    error('Error with chat completion', err);
-    throw new Error(err.message);
-  }
+  return completion.data.choices[0].message;
+  // } catch (err) {
+  //   error('Error with chat completion', err);
+  //   throw new Error(err.message);
+  // }
 };
 
 // https://platform.openai.com/docs/api-reference/images/create

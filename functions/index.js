@@ -1,5 +1,5 @@
-import { onCall } from 'firebase-functions/v2/https';
-import { info } from 'firebase-functions/logger';
+import { HttpsError, onCall } from 'firebase-functions/v2/https';
+import { info, error } from 'firebase-functions/logger';
 import {
   createCompletion,
   createChatCompletion,
@@ -18,13 +18,18 @@ export const textCompletion = onCall(async ({ data }) => {
 
 // end point for chat completions
 export const chatResponse = onCall(async ({ data }) => {
-  const response = await createChatCompletion(data.messages);
-  info(`Chat request: "${data.messages[data.messages.length - 1].content}"`, {
-    prompt: data.messages,
-    response
-  });
+  try {
+    const response = await createChatCompletion(data.messages);
+    info(`Chat request: "${data.messages[data.messages.length - 1].content}"`, {
+      prompt: data.messages,
+      response
+    });
 
-  return response;
+    return response;
+  } catch (err) {
+    error(err);
+    throw new HttpsError('internal', 'OpenAI have had an issue', err);
+  }
 });
 
 // end point for image generations
