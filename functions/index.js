@@ -28,7 +28,7 @@ export const chatResponse = onCall(async ({ data }) => {
     return response;
   } catch (err) {
     error(err);
-    throw new HttpsError('internal', 'OpenAI have had an issue', err);
+    throw new HttpsError('internal', 'OpenAI has had an issue', err);
   }
 });
 
