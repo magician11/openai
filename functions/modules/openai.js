@@ -15,6 +15,7 @@ const createCompletion = async (prompt, max_tokens = 333) => {
       prompt,
       max_tokens
     });
+
     info('completion.data', completion.data);
     return completion.data.choices[0].text;
   } catch (err) {
@@ -39,6 +40,17 @@ const createChatCompletion = async messages => {
   // }
 };
 
+// https://platform.openai.com/docs/api-reference/chat/create
+const createChatCompletionBeta = async messages => {
+  const completion = await openai.createChatCompletion({
+    model: 'gpt-4-0613',
+    messages
+  });
+  info('chat completion.data (beta)', completion.data);
+
+  return completion.data.choices[0].message;
+};
+
 // https://platform.openai.com/docs/api-reference/images/create
 const createImage = async prompt => {
   info(`Generating an image for "${prompt}"`);
@@ -51,4 +63,9 @@ const createImage = async prompt => {
   return response.data.data[0].url;
 };
 
-export { createCompletion, createChatCompletion, createImage };
+export {
+  createCompletion,
+  createChatCompletion,
+  createImage,
+  createChatCompletionBeta
+};

@@ -3,7 +3,8 @@ import { info, error } from 'firebase-functions/logger';
 import {
   createCompletion,
   createChatCompletion,
-  createImage
+  createImage,
+  createChatCompletionBeta
 } from './modules/openai.js';
 
 // end point for text completions
@@ -29,6 +30,26 @@ export const chatResponse = onCall(async ({ data }) => {
   } catch (err) {
     error(err);
     throw new HttpsError('internal', 'OpenAI has had an issue', err);
+  }
+});
+
+export const chatResponseBeta = onCall(async ({ data }) => {
+  try {
+    const response = await createChatCompletionBeta(data.messages);
+    info(
+      `Chat request (beta): "${
+        data.messages[data.messages.length - 1].content
+      }"`,
+      {
+        prompt: data.messages,
+        response
+      }
+    );
+
+    return response;
+  } catch (err) {
+    error(err);
+    throw new HttpsError('internal', 'OpenAI has had an issue (beta)', err);
   }
 });
 
