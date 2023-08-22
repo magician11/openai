@@ -33,25 +33,30 @@ export const chatResponse = onCall(async ({ data }) => {
   }
 });
 
-export const chatResponseBeta = onCall(async ({ data }) => {
-  try {
-    const response = await createChatCompletionBeta(data.messages);
-    info(
-      `Chat request (beta): "${
-        data.messages[data.messages.length - 1].content
-      }"`,
-      {
-        prompt: data.messages,
-        response
-      }
-    );
+export const chatResponseBeta = onCall(
+  {
+    timeoutSeconds: 11 * 60
+  },
+  async ({ data }) => {
+    try {
+      const response = await createChatCompletionBeta(data.messages);
+      info(
+        `Chat request (beta): "${
+          data.messages[data.messages.length - 1].content
+        }"`,
+        {
+          prompt: data.messages,
+          response
+        }
+      );
 
-    return response;
-  } catch (err) {
-    error(err);
-    throw new HttpsError('internal', 'OpenAI has had an issue (beta)', err);
+      return response;
+    } catch (err) {
+      error(err);
+      throw new HttpsError('internal', 'OpenAI has had an issue (beta)', err);
+    }
   }
-});
+);
 
 // end point for image generations
 export const generateImage = onCall(async ({ data }) => {
