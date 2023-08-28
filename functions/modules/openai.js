@@ -50,7 +50,7 @@ const createChatCompletionBeta = async messages => {
     model: 'gpt-4-0613',
     messages
   });
-  info('chat completion.data (beta)', completion.data);
+  info('chat completion.data (beta)', completion);
 
   return completion.choices[0].message;
 };
