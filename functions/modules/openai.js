@@ -1,26 +1,5 @@
 import OpenAI from 'openai';
-import { info, error } from 'firebase-functions/logger';
-
-// https://platform.openai.com/docs/api-reference/completions/create
-const createCompletion = async (prompt, max_tokens = 333) => {
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-  });
-  info(`About to complete the prompt "${prompt}"..."`);
-  try {
-    const completion = await openai.completions.create({
-      model: 'text-davinci-003',
-      prompt,
-      max_tokens
-    });
-
-    info('completion.data', completion.data);
-    return completion.choices[0].text;
-  } catch (err) {
-    error('Error completing prompt', err.message);
-    throw new Error(err.message);
-  }
-};
+import { info } from 'firebase-functions/logger';
 
 // https://platform.openai.com/docs/api-reference/chat/create
 const createChatCompletion = async messages => {
@@ -42,7 +21,7 @@ const createChatCompletion = async messages => {
 };
 
 // https://platform.openai.com/docs/api-reference/chat/create
-const createChatCompletionBeta = async messages => {
+const createChatCompletionGpt4 = async messages => {
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
   });
@@ -70,9 +49,25 @@ const createImage = async prompt => {
   return response.data.data[0].url;
 };
 
-export {
-  createCompletion,
-  createChatCompletion,
-  createImage,
-  createChatCompletionBeta
-};
+export { createChatCompletion, createImage, createChatCompletionGpt4 };
+
+// https://platform.openai.com/docs/api-reference/completions/create
+// const createCompletion = async (prompt, max_tokens = 333) => {
+//   const openai = new OpenAI({
+//     apiKey: process.env.OPENAI_API_KEY
+//   });
+//   info(`About to complete the prompt "${prompt}"..."`);
+//   try {
+//     const completion = await openai.completions.create({
+//       model: 'text-davinci-003',
+//       prompt,
+//       max_tokens
+//     });
+
+//     info('completion.data', completion.data);
+//     return completion.choices[0].text;
+//   } catch (err) {
+//     error('Error completing prompt', err.message);
+//     throw new Error(err.message);
+//   }
+// };
