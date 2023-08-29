@@ -2,34 +2,15 @@ import OpenAI from 'openai';
 import { info } from 'firebase-functions/logger';
 
 // https://platform.openai.com/docs/api-reference/chat/create
-const createChatCompletion = async messages => {
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-  });
-  // try {
-  const completion = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo',
-    messages
-  });
-  info('chat completion.data', completion.data);
-
-  return completion.choices[0].message;
-  // } catch (err) {
-  //   error('Error with chat completion', err);
-  //   throw new Error(err.message);
-  // }
-};
-
-// https://platform.openai.com/docs/api-reference/chat/create
-const createChatCompletionGpt4 = async messages => {
+const createChatCompletion = async (messages, model = 'gpt-3.5-turbo') => {
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
   });
   const completion = await openai.chat.completions.create({
-    model: 'gpt-4-0613',
+    model,
     messages
   });
-  info('chat completion.data (beta)', completion);
+  info(`chat completion.data (${model})`, completion.data);
 
   return completion.choices[0].message;
 };

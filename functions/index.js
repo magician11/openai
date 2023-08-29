@@ -5,7 +5,7 @@ import { createChatCompletion, createImage } from './modules/openai.js';
 // end point for chat completions
 export const chatResponse = onCall(async ({ data }) => {
   try {
-    const response = await createChatCompletion(data.messages);
+    const response = await createChatCompletion(data.messages); // model: 'gpt-4-0613',
     info(`Chat request: "${data.messages[data.messages.length - 1].content}"`, {
       prompt: data.messages,
       response
