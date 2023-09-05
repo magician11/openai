@@ -10,7 +10,6 @@ const createChatCompletion = async (messages, model = 'gpt-3.5-turbo') => {
     model,
     messages
   });
-  info(`chat completion.data (${model})`, completion.data);
 
   return completion.choices[0].message;
 };
@@ -30,25 +29,4 @@ const createImage = async prompt => {
   return response.data.data[0].url;
 };
 
-export { createChatCompletion, createImage, createChatCompletionGpt4 };
-
-// https://platform.openai.com/docs/api-reference/completions/create
-// const createCompletion = async (prompt, max_tokens = 333) => {
-//   const openai = new OpenAI({
-//     apiKey: process.env.OPENAI_API_KEY
-//   });
-//   info(`About to complete the prompt "${prompt}"..."`);
-//   try {
-//     const completion = await openai.completions.create({
-//       model: 'text-davinci-003',
-//       prompt,
-//       max_tokens
-//     });
-
-//     info('completion.data', completion.data);
-//     return completion.choices[0].text;
-//   } catch (err) {
-//     error('Error completing prompt', err.message);
-//     throw new Error(err.message);
-//   }
-// };
+export { createChatCompletion, createImage };

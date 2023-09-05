@@ -5,7 +5,7 @@ import { createChatCompletion, createImage } from './modules/openai.js';
 // end point for chat completions
 export const chatResponse = onCall(async ({ data }) => {
   try {
-    const response = await createChatCompletion(data.messages); // model: 'gpt-4-0613',
+    const response = await createChatCompletion(data.messages); // for the fancier model: 'gpt-4-0613',
     info(`Chat request: "${data.messages[data.messages.length - 1].content}"`, {
       prompt: data.messages,
       response
@@ -28,40 +28,3 @@ export const generateImage = onCall(async ({ data }) => {
 
   return imageUrl;
 });
-
-/*
-// end point for text completions
-export const textCompletion = onCall(async ({ data }) => {
-  const response = await createCompletion(data.prompt, data.maxTokens);
-  info(`Completion request: ${data.prompt}`, {
-    prompt: data.prompt,
-    response
-  });
-  return response;
-});
-
-export const chatResponseBeta = onCall(
-  {
-    timeoutSeconds: 11 * 60
-  },
-  async ({ data }) => {
-    try {
-      const response = await createChatCompletionBeta(data.messages);
-      info(
-        `Chat request (beta): "${
-          data.messages[data.messages.length - 1].content
-        }"`,
-        {
-          prompt: data.messages,
-          response
-        }
-      );
-
-      return response;
-    } catch (err) {
-      error(err);
-      throw new HttpsError('internal', 'OpenAI has had an issue (beta)', err);
-    }
-  }
-);
-*/
