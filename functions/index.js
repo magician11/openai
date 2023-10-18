@@ -9,16 +9,13 @@ export const chatResponse = onCall(
   },
   async ({ data }) => {
     try {
-      const response = await createChatCompletion(
-        data.messages,
-        // 'gpt-4-32k'
-        'gpt-3.5-turbo-16k'
-      ); // for the fancier model: 'gpt-4-0613',
+      const response = await createChatCompletion(data);
       info(
         `Chat request: "${data.messages[data.messages.length - 1].content}"`,
         {
           prompt: data.messages,
-          response
+          response,
+          model: data.model
         }
       );
 
