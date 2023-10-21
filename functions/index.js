@@ -11,7 +11,9 @@ export const chatResponse = onCall(
     try {
       const response = await createChatCompletion(data);
       info(
-        `Chat request: "${data.messages[data.messages.length - 1].content}"`,
+        `${auth.token.email}: "${
+          data.messages[data.messages.length - 1].content
+        }"`,
         {
           prompt: data.messages,
           response,
