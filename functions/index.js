@@ -7,7 +7,7 @@ export const chatResponse = onCall(
   {
     timeoutSeconds: 333
   },
-  async ({ data }) => {
+  async ({ data, auth }) => {
     try {
       const response = await createChatCompletion(data);
       info(
@@ -15,7 +15,11 @@ export const chatResponse = onCall(
         {
           prompt: data.messages,
           response,
-          model: data.model
+          model: data.model,
+          user: {
+            id: auth.uid,
+            email: auth.token.email
+          }
         }
       );
 
