@@ -19,7 +19,6 @@ const createImage = async prompt => {
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
   });
-  info(`Generating an image for "${prompt}"`);
   const response = await openai.images.generate({
     prompt
   });

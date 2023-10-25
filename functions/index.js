@@ -11,7 +11,7 @@ export const chatResponse = onCall(
     try {
       const response = await createChatCompletion(data);
       info(
-        `${auth.token.email}: "${
+        `${auth.token.email}: (chat) "${
           data.messages[data.messages.length - 1].content
         }"`,
         {
@@ -34,11 +34,15 @@ export const chatResponse = onCall(
 );
 
 // end point for image generations
-export const generateImage = onCall(async ({ data }) => {
+export const generateImage = onCall(async ({ data, auth }) => {
   const imageUrl = await createImage(data.prompt);
-  info(`Generate image: ${data.prompt}`, {
+  info(`${auth.token.email}: (image) "${data.prompt}"`, {
     prompt: data.prompt,
-    imageUrl
+    imageUrl,
+    user: {
+      id: auth.uid,
+      email: auth.token.email
+    }
   });
 
   return imageUrl;
