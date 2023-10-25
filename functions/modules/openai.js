@@ -26,7 +26,7 @@ const createImage = async prompt => {
 
   info(response);
 
-  return response.data.data[0].url;
+  return response.data[0].url;
 };
 
 export { createChatCompletion, createImage };
