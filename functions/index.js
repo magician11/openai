@@ -35,15 +35,27 @@ export const chatResponse = onCall(
 
 // end point for image generations
 export const generateImage = onCall(async ({ data, auth }) => {
-  const imageUrl = await createImage(data.prompt);
-  info(`${auth.token.email}: (image) "${data.prompt}"`, {
-    prompt: data.prompt,
-    imageUrl,
-    user: {
-      id: auth.uid,
-      email: auth.token.email
-    }
-  });
+  try {
+    const imageUrl = await createImage(data.prompt);
+    info(`${auth.token.email}: (image) "${data.prompt}"`, {
+      prompt: data.prompt,
+      imageUrl,
+      user: {
+        id: auth.uid,
+        email: auth.token.email
+      }
+    });
 
-  return imageUrl;
+    return imageUrl;
+  } catch (err) {
+    error(`${auth.token.email}: (image) "${data.prompt}"`, {
+      prompt: data.prompt,
+      error: err,
+      user: {
+        id: auth.uid,
+        email: auth.token.email
+      }
+    });
+    throw new HttpsError('internal', 'OpenAI image generation error', err);
+  }
 });

@@ -1,5 +1,4 @@
 import OpenAI from 'openai';
-import { info } from 'firebase-functions/logger';
 
 // https://platform.openai.com/docs/api-reference/chat/create
 const createChatCompletion = async ({ messages, model = 'gpt-3.5-turbo' }) => {
@@ -22,8 +21,6 @@ const createImage = async prompt => {
   const response = await openai.images.generate({
     prompt
   });
-
-  info(response);
 
   return response.data[0].url;
 };
