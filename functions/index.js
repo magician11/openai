@@ -10,17 +10,16 @@ export const chatResponse = onCall(
   async ({ data, auth }) => {
     try {
       const response = await createChatCompletion(data);
+      const email = auth ? auth.token.email : 'anonymous';
       info(
-        `${auth.token.email}: (chat) "${
-          data.messages[data.messages.length - 1].content
-        }"`,
+        `${email}: (chat) "${data.messages[data.messages.length - 1].content}"`,
         {
           prompt: data.messages,
           response,
           model: data.model,
           user: {
-            id: auth.uid,
-            email: auth.token.email
+            id: auth?.uid,
+            email
           }
         }
       );
