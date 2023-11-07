@@ -1,6 +1,10 @@
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
 import { info, error } from 'firebase-functions/logger';
-import { createChatCompletion, createImage } from './modules/openai.js';
+import {
+  createChatCompletion,
+  createImage,
+  getSpeech
+} from './modules/openai.js';
 
 // end point for chat completions
 export const chatResponse = onCall(
@@ -56,5 +60,20 @@ export const generateImage = onCall(async ({ data, auth }) => {
       }
     });
     throw new HttpsError('internal', 'OpenAI image generation error', err);
+  }
+});
+
+// end point for speech generations
+export const textToSpeech = onCall(async ({ data }) => {
+  try {
+    const speech = await getSpeech(data.text);
+    info(`(tts) "${data.text}"`);
+
+    return speech;
+  } catch (err) {
+    error(`(tts) "${data.text}"`, {
+      error: err
+    });
+    throw new HttpsError('internal', 'OpenAI speech generation error', err);
   }
 });

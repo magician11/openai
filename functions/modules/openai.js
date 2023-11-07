@@ -26,4 +26,18 @@ const createImage = async prompt => {
   return response.data[0].url;
 };
 
-export { createChatCompletion, createImage };
+// https://platform.openai.com/docs/guides/text-to-speech?lang=node
+const getSpeech = async input => {
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY
+  });
+  const speech = await openai.audio.speech.create({
+    model: 'tts-1',
+    voice: 'nova',
+    input
+  });
+
+  return speech;
+};
+
+export { createChatCompletion, createImage, getSpeech };
