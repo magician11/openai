@@ -19,7 +19,8 @@ const createImage = async prompt => {
     apiKey: process.env.OPENAI_API_KEY
   });
   const response = await openai.images.generate({
-    prompt
+    prompt,
+    model: 'dall-e-3'
   });
 
   return response.data[0].url;
