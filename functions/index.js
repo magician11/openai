@@ -67,7 +67,10 @@ export const generateImage = onCall(async ({ data, auth }) => {
 export const textToSpeech = onCall(async ({ data }) => {
   try {
     const speech = await getSpeech(data.text);
-    info(`(tts) "${data.text}"`);
+    info(`(tts) "${data.text}"`, {
+      text: data.text,
+      speech
+    });
 
     return speech;
   } catch (err) {

@@ -37,7 +37,10 @@ const getSpeech = async input => {
     input
   });
 
-  return speech;
+  const buffer = Buffer.from(await speech.arrayBuffer());
+  const base64 = buffer.toString('base64');
+
+  return base64;
 };
 
 export { createChatCompletion, createImage, getSpeech };
