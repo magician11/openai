@@ -1,6 +1,7 @@
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
 import { info, error } from 'firebase-functions/logger';
 import {
+  analyseImage,
   createChatCompletion,
   createImage,
   getSpeech
@@ -78,5 +79,23 @@ export const textToSpeech = onCall(async ({ data }) => {
       error: err
     });
     throw new HttpsError('internal', 'OpenAI speech generation error', err);
+  }
+});
+
+// end point for image analysis
+export const queryImage = onCall(async ({ data }) => {
+  try {
+    const analysis = await analyseImage(data);
+    info(`(vision) "${data.text}"`, {
+      text: data.text,
+      analysis
+    });
+
+    return analysis;
+  } catch (err) {
+    error(`(vision) "${data.text}"`, {
+      error: err
+    });
+    throw new HttpsError('internal', 'OpenAI image analysis error', err);
   }
 });

@@ -43,4 +43,30 @@ const getSpeech = async input => {
   return base64;
 };
 
-export { createChatCompletion, createImage, getSpeech };
+// https://platform.openai.com/docs/guides/vision?lang=node
+const analyseImage = async ({ text, imageUrl }) => {
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY
+  });
+  const response = await openai.chat.completions.create({
+    model: 'gpt-4-vision-preview',
+    messages: [
+      {
+        role: 'user',
+        content: [
+          { type: 'text', text },
+          {
+            type: 'image_url',
+            image_url: {
+              url: imageUrl
+            }
+          }
+        ]
+      }
+    ]
+  });
+
+  return response.choices[0];
+};
+
+export { createChatCompletion, createImage, getSpeech, analyseImage };
