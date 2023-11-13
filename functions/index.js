@@ -83,10 +83,10 @@ export const textToSpeech = onCall(async ({ data }) => {
 });
 
 // end point for image analysis
-export const queryImage = onCall(async ({ data }) => {
+export const queryImage = onCall(async ({ data, auth }) => {
   try {
     const analysis = await analyseImage(data);
-    info(`(vision) "${data.text}"`, {
+    info(`${auth.token.email}: (vision) "${data.text}"`, {
       text: data.text,
       analysis
     });
