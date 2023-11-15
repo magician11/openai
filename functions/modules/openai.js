@@ -64,7 +64,7 @@ const analyseImage = async ({ text, imageUrl }) => {
         ]
       }
     ],
-    max_tokens: 333
+    max_tokens: 555
   });
 
   return response.choices[0];
