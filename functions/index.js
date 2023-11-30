@@ -40,7 +40,7 @@ export const chatResponse = onCall(
 // end point for image generations
 export const generateImage = onCall(async ({ data, auth }) => {
   try {
-    const imageUrl = await createImage(data.prompt);
+    const imageUrl = await createImage(data);
     info(`${auth.token.email}: (image) "${data.prompt}"`, {
       prompt: data.prompt,
       imageUrl,

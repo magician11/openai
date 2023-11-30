@@ -14,12 +14,14 @@ const createChatCompletion = async ({ messages, model = 'gpt-3.5-turbo' }) => {
 };
 
 // https://platform.openai.com/docs/api-reference/images/create
-const createImage = async prompt => {
+const createImage = async ({ prompt, size }) => {
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
   });
   const response = await openai.images.generate({
     prompt,
+    size,
+    quality: 'hd',
     model: 'dall-e-3'
   });
 
