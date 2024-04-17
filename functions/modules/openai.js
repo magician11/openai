@@ -51,7 +51,7 @@ const analyseImage = async ({ text, imageUrl }) => {
     apiKey: process.env.OPENAI_API_KEY
   });
   const response = await openai.chat.completions.create({
-    model: 'gpt-4-vision-preview',
+    model: 'gpt-4-turbo',
     messages: [
       {
         role: 'user',
