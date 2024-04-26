@@ -15,8 +15,8 @@ dependencies:
     specifier: ^4.9.0
     version: 4.9.0(firebase-admin@12.1.0)
   openai:
-    specifier: ^4.36.0
-    version: 4.36.0
+    specifier: ^4.38.5
+    version: 4.38.5
 
 devDependencies:
   eslint:
@@ -3456,8 +3456,8 @@ packages:
       mimic-fn: 2.1.0
     dev: true
 
-  /openai@4.36.0:
-    resolution: {integrity: sha512-AtYrhhWY64LhB9P6f3H0nV8nTSaQJ89mWPnfNU5CnYg81zlYaV8nkyO+aTNfprdqP/9xv10woNNUgefXINT4Dg==}
+  /openai@4.38.5:
+    resolution: {integrity: sha512-Ym5GJL98ZhLJJ7enBx53jjG3vwN/fsB+Ozh46nnRZZS9W1NiYqbwkJ+sXd3dkCIiWIgcyyOPL2Zr8SQAzbpj3g==}
     hasBin: true
     dependencies:
       '@types/node': 18.19.10

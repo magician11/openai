@@ -67,7 +67,7 @@ export const generateImage = onCall(async ({ data, auth }) => {
 // end point for speech generations
 export const textToSpeech = onCall(async ({ data }) => {
   try {
-    const speech = await getSpeech(data.text);
+    const speech = await getSpeech(data);
     info(`(tts) "${data.text}"`, {
       text: data.text,
       speech

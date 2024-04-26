@@ -29,13 +29,13 @@ const createImage = async ({ prompt, size }) => {
 };
 
 // https://platform.openai.com/docs/guides/text-to-speech?lang=node
-const getSpeech = async input => {
+const getSpeech = async ({ text: input, voice = 'nova' }) => {
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
   });
   const speech = await openai.audio.speech.create({
     model: 'tts-1',
-    voice: 'nova',
+    voice,
     input
   });
 
