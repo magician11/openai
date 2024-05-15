@@ -1,7 +1,6 @@
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
 import { info, error } from 'firebase-functions/logger';
 import {
-  analyseImage,
   createChatCompletion,
   createImage,
   getSpeech
@@ -14,10 +13,15 @@ export const chatResponse = onCall(
   },
   async ({ data, auth }) => {
     try {
+      info(data);
       const response = await createChatCompletion(data);
       const email = auth ? auth.token.email : 'anonymous';
       info(
-        `${email}: (chat) "${data.messages[data.messages.length - 1].content}"`,
+        `${email}: (chat) "${
+          data.messages[data.messages.length - 1].content[0].text
+            ? data.messages[data.messages.length - 1].content[0].text
+            : data.messages[data.messages.length - 1].content[0].image_url.url
+        }"`,
         {
           prompt: data.messages,
           response,
@@ -32,7 +36,11 @@ export const chatResponse = onCall(
       return response;
     } catch (err) {
       error(err);
-      throw new HttpsError('internal', 'OpenAI has had an issue', err);
+      throw new HttpsError(
+        'internal',
+        'OpenAI has wandered off for a zen retreat. It might return… eventually. 🧘‍♂️✨',
+        err
+      );
     }
   }
 );
@@ -79,23 +87,5 @@ export const textToSpeech = onCall(async ({ data }) => {
       error: err
     });
     throw new HttpsError('internal', 'OpenAI speech generation error', err);
-  }
-});
-
-// end point for image analysis
-export const queryImage = onCall(async ({ data, auth }) => {
-  try {
-    const analysis = await analyseImage(data);
-    info(`${auth.token.email}: (vision) "${data.text}"`, {
-      text: data.text,
-      analysis
-    });
-
-    return analysis;
-  } catch (err) {
-    error(`(vision) "${data.text}"`, {
-      error: err
-    });
-    throw new HttpsError('internal', 'OpenAI image analysis error', err);
   }
 });

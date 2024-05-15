@@ -18,8 +18,8 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1(firebase-admin@12.1.0)
       openai:
-        specifier: ^4.46.1
-        version: 4.46.1
+        specifier: ^4.47.1
+        version: 4.47.1
     devDependencies:
       eslint:
         specifier: ^8.56.0
@@ -1790,8 +1790,8 @@ packages:
     resolution: {integrity: sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==}
     engines: {node: '>=6'}
 
-  openai@4.46.1:
-    resolution: {integrity: sha512-YILOwSwyg6h4FqDCehzZ/vu0hI6eQWXv7BQ/nNNyRHbprerZmkiRYBzq2h4iiJKUOrIw66APE46ZW/iP8y8Fiw==}
+  openai@4.47.1:
+    resolution: {integrity: sha512-WWSxhC/69ZhYWxH/OBsLEirIjUcfpQ5+ihkXKp06hmeYXgBBIUCa9IptMzYx6NdkiOCsSGYCnTIsxaic3AjRCQ==}
     hasBin: true
 
   optionator@0.9.3:
@@ -4599,7 +4599,7 @@ snapshots:
     dependencies:
       mimic-fn: 2.1.0
 
-  openai@4.46.1:
+  openai@4.47.1:
     dependencies:
       '@types/node': 18.19.10
       '@types/node-fetch': 2.6.11

@@ -10,7 +10,10 @@ const createChatCompletion = async ({ messages, model = 'gpt-3.5-turbo' }) => {
     messages
   });
 
-  return completion.choices[0].message;
+  return {
+    role: 'assistant',
+    content: [{ type: 'text', text: completion.choices[0].message.content }]
+  };
 };
 
 // https://platform.openai.com/docs/api-reference/images/create
@@ -45,31 +48,4 @@ const getSpeech = async ({ text: input, voice = 'nova' }) => {
   return base64;
 };
 
-// https://platform.openai.com/docs/guides/vision?lang=node
-const analyseImage = async ({ text, imageUrl }) => {
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-  });
-  const response = await openai.chat.completions.create({
-    model: 'gpt-4o',
-    messages: [
-      {
-        role: 'user',
-        content: [
-          { type: 'text', text },
-          {
-            type: 'image_url',
-            image_url: {
-              url: imageUrl
-            }
-          }
-        ]
-      }
-    ],
-    max_tokens: 2222
-  });
-
-  return response.choices[0];
-};
-
-export { createChatCompletion, createImage, getSpeech, analyseImage };
+export { createChatCompletion, createImage, getSpeech };
