@@ -10,10 +10,7 @@ const createChatCompletion = async ({ messages, model = 'gpt-3.5-turbo' }) => {
     messages
   });
 
-  return {
-    role: 'assistant',
-    content: [{ type: 'text', text: completion.choices[0].message.content }]
-  };
+  return completion.choices[0].message;
 };
 
 // https://platform.openai.com/docs/api-reference/images/create

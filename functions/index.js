@@ -16,22 +16,15 @@ export const chatResponse = onCall(
       info(data);
       const response = await createChatCompletion(data);
       const email = auth ? auth.token.email : 'anonymous';
-      info(
-        `${email}: (chat) "${
-          data.messages[data.messages.length - 1].content[0].text
-            ? data.messages[data.messages.length - 1].content[0].text
-            : data.messages[data.messages.length - 1].content[0].image_url.url
-        }"`,
-        {
-          prompt: data.messages,
-          response,
-          model: data.model,
-          user: {
-            id: auth?.uid,
-            email
-          }
+      info(`${email}: (chat)`, {
+        prompt: data.messages,
+        response,
+        model: data.model,
+        user: {
+          id: auth?.uid,
+          email
         }
-      );
+      });
 
       return response;
     } catch (err) {
